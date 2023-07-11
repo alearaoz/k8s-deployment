@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    DOCKER_IMAGE_NAME = "thetips4you/nodeapp"
+    DOCKER_IMAGE_NAME = "aaraoz/nodeapp"
     DOCKER_IMAGE = ""
 
   }
@@ -12,7 +12,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/shazforiot/nodeapp_test.git'
+        git 'https://github.com/alearaoz/k8s-deployment'
       }
     }
 
@@ -26,7 +26,7 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'dockerhublogin'
+               registryCredential = 'docker_aaraoz'
            }
       steps{
         script {
@@ -40,7 +40,7 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
+          kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "kubernetes")
         }
       }
     }

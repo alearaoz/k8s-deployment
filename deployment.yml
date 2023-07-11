@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nodeapp-deployment
-  namespace: www-public
+  namespace: cicd
   labels:
     app: nodeapp
 spec:
@@ -25,7 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nodeapp-service
-  namespace: www-public
+  namespace: cicd
 spec:
   selector:
     app: nodeapp
@@ -39,6 +39,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nodepapp
+  namespace: cicd
   labels:
     name: nodeapp
   annotations:
