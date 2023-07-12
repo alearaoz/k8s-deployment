@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    DOCKER_IMAGE_NAME = "aaraoz/nodeapp"
+    DOCKER_IMAGE_NAME = "aaraoz/flappi"
     DOCKER_IMAGE = ""
 
   }
